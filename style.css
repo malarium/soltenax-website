@@ -1,0 +1,123 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #141515;
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  overflow: hidden;
+
+  /* MOBILE SHIFT DISTANCE (Just one final destination now) */
+  --slide-shift: -35px;
+
+  .logo {
+    position: absolute;
+    opacity: 0;
+    width: 100vw;
+    height: auto;
+    margin-left: 5%;
+    animation: fadeLogo 14s infinite;
+  }
+
+  p {
+    position: absolute;
+    opacity: 0;
+    font-family: "Sixtyfour", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+      "BLED" 0,
+      "SCAN" 0;
+    color: #ffffff;
+    font-size: clamp(1.5rem, 5vw + 1rem, 4rem);
+    /* Added 'linear' to ensure the movement speed never fluctuates */
+    animation: textSlideSync 14s linear infinite;
+  }
+
+  p::after {
+    content: "";
+    position: absolute;
+    animation: typeDotsSync 14s infinite;
+  }
+}
+
+/* DESKTOP SHIFT DISTANCES */
+@media (min-width: 768px) {
+  .container {
+    /* Final destination for bigger screens */
+    --slide-shift: -65px;
+  }
+
+  .container .logo {
+    width: 50vw;
+  }
+}
+
+/* 1. ANIMATION LOGO */
+@keyframes fadeLogo {
+  0% {
+    opacity: 0;
+  }
+  14.28% {
+    opacity: 1;
+  }
+  35.71% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* 2. ANIMATION TEXT */
+@keyframes textSlideSync {
+  0% {
+    opacity: 0;
+    transform: translateX(0);
+  }
+  50% {
+    opacity: 0;
+    transform: translateX(0); /* Movement starts exactly here */
+  }
+  64.28% {
+    opacity: 1;
+    /* transform removed - the browser will seamlessly interpolate the movement! */
+  }
+  85.71% {
+    opacity: 1;
+    /* transform removed */
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(var(--slide-shift)); /* Movement ends exactly here */
+  }
+}
+
+/* 3. ANIMATION DOTS */
+@keyframes typeDotsSync {
+  0%,
+  64% {
+    content: "";
+  }
+  69% {
+    content: ".";
+  }
+  74% {
+    content: "..";
+  }
+  79%,
+  100% {
+    content: "...";
+  }
+}

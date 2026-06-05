@@ -31,13 +31,29 @@
     />
   </head>
   <body>
+    <audio id="bg-music">
+      <source src="./sounds/menu_music2-trimmed.wav" type="audio/wav" />
+    </audio>
     <div class="container">
-      <img
-        src="./images/STL_black_tr_light.png"
-        alt="Sol Tenax Logo"
-        class="logo"
-      />
-      <p>SOON</p>
+      <div class="glitch-img-wrapper">
+        <img
+          src="./images/STL_black_tr_light.png"
+          alt="Sol Tenax Logo"
+          class="logo-main"
+        />
+        <img
+          src="./images/STL_black_tr_light.png"
+          alt=""
+          class="logo-main layer-1"
+        />
+        <img
+          src="./images/STL_black_tr_light.png"
+          alt=""
+          class="logo-main layer-2"
+        />
+      </div>
+      <p><span class="glitch" data-text="SOON">SOON</span></p>
     </div>
   </body>
+  <script src="./script.js"></script>
 </html>
